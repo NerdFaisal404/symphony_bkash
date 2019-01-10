@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('bKashStore','ApiController@bKashStore');
 Route::post('bKashUpdate/{id}','ApiController@bKashUpdate');
 Route::get('bKash','ApiController@bKash');
+Route::get('{imei1}','ApiController@bKashImei1');

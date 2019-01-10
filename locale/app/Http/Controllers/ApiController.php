@@ -10,10 +10,10 @@ class ApiController extends Controller
     public function bKashStore(Request $request){
     	if(!is_null($request->IMEI1)){
 
-            $bKash = Bkash::where('IMEI1',$request->IMEI1)->count();
-            if($bKash>0){
+            $bKash = Bkash::where('IMEI1',$request->IMEI1)->first();
+            if(!is_null($bKash)){
                 return response()->json([
-                    'status' => 'Data not inserted . IMEI1 Already in record. Trying to different IMEI1',
+                    'id' => $bKash->id,
                     'code'=>204
                 ]);
             }else{
@@ -93,12 +93,48 @@ class ApiController extends Controller
         }
     }
     public function bKash(){
-    	$bKash = Bkash::orderByDesc('id')->get();
-    	if(count($bKash)>0){
-			return response()->json([
-					'data' => $bKash,
+        $bKash = Bkash::orderByDesc('id')->get();
+        if(count($bKash)>0){
+            return response()->json([
+                    'data' => $bKash,
                     'status' => 'Data Found',
                     'code'=>200
+                ]);
+        }else{
+            return response()->json([
+                    'status' => 'Data Not Found',
+                    'code'=>200
+                ]);
+        }
+    }
+    public function bKashImei1($imei1){
+    	$bKash = Bkash::where('imei1',$imei1)->first();
+    	if(count($bKash)>0){
+            if($bKash->Activated==0){
+                $activated = 'Not Activated';
+            }
+            elseif($bKash->Activated==1){
+                $activated = 'Activated';
+            }
+            elseif($bKash->Activated==2){
+                $activated = 'Indpendent Install';
+            }
+            elseif($bKash->Activated==3){
+                $activated = 'App Removed';
+            }
+
+
+            $data['IMEI1'] = $bKash->IMEI1;
+            $data['IMEI2'] = $bKash->IMEI2;
+            $data['MAC'] = $bKash->MAC;
+            $data['ANDROID_ID'] = $bKash->ANDROID_ID;
+            $data['sim1'] = $bKash->sim1;
+            $data['sim2'] = $bKash->sim2;
+            $data['Activated'] = $activated;
+            $data['Model'] = $bKash->Model;
+
+			return response()->json([
+					'data' => $data                    
                 ]);
 		}else{
 			return response()->json([
