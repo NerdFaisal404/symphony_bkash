@@ -110,27 +110,14 @@ class ApiController extends Controller
     public function bKashImei1($imei1){
     	$bKash = Bkash::where('imei1',$imei1)->first();
     	if(count($bKash)>0){
-            if($bKash->Activated==0){
-                $activated = 'Not Activated';
-            }
-            elseif($bKash->Activated==1){
-                $activated = 'Activated';
-            }
-            elseif($bKash->Activated==2){
-                $activated = 'Indpendent Install';
-            }
-            elseif($bKash->Activated==3){
-                $activated = 'App Removed';
-            }
-
-
+            $data['id'] = $bKash->id;
             $data['IMEI1'] = $bKash->IMEI1;
             $data['IMEI2'] = $bKash->IMEI2;
             $data['MAC'] = $bKash->MAC;
             $data['ANDROID_ID'] = $bKash->ANDROID_ID;
             $data['sim1'] = $bKash->sim1;
             $data['sim2'] = $bKash->sim2;
-            $data['Activated'] = $activated;
+            $data['Activated'] = $bKash->Activated;
             $data['Model'] = $bKash->Model;
 
 			return response()->json([
