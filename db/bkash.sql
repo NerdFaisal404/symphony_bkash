@@ -1,0 +1,91 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.7
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Jan 12, 2019 at 04:11 AM
+-- Server version: 10.1.37-MariaDB-cll-lve
+-- PHP Version: 5.6.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bdmovmvc_bkash`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bkash`
+--
+
+CREATE TABLE `bkash` (
+  `id` int(11) NOT NULL,
+  `IMEI1` varchar(20) NOT NULL,
+  `IMEI2` varchar(20) DEFAULT NULL,
+  `MAC` varchar(30) DEFAULT NULL,
+  `ANDROID_ID` varchar(50) DEFAULT NULL,
+  `sim1` varchar(30) DEFAULT NULL,
+  `sim2` varchar(30) DEFAULT NULL,
+  `Activated` tinyint(4) NOT NULL DEFAULT '0',
+  `Model` varchar(20) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bkash`
+--
+
+INSERT INTO `bkash` (`id`, `IMEI1`, `IMEI2`, `MAC`, `ANDROID_ID`, `sim1`, `sim2`, `Activated`, `Model`, `created_at`, `updated_at`) VALUES
+(31, '358437080375555', '358437080375563', '24:0D:65:8D:04:26', '4dd682e091db2be3', '8988036120704867961f', '8988013408550653289f', 0, 'Symphony Primo_GM2_P', '2019-01-09 08:15:22', '2019-01-12 14:00:07'),
+(32, '0123456789', '0123456789', '5C:15:15:16:D2:21', '28e53635d9a6d4a8', '8988013408550653297f', '000000', 2, 'Symphony V125', '2019-01-09 08:26:27', '2019-01-09 17:52:00'),
+(33, '12345650123232568', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-10 14:27:27', '2019-01-10 14:40:16'),
+(35, '123456501232325689', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-10 14:40:53', '2019-01-10 15:06:08'),
+(36, '12345', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-10 18:09:16', '2019-01-10 18:11:11'),
+(37, '123451234125', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-10 18:36:37', '2019-01-11 01:08:17'),
+(38, '123451234', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-10 23:39:55', '2019-01-10 23:39:55'),
+(39, '123456', '5678', '910', '123', '456', '8', 0, '789', '2019-01-11 00:04:09', '2019-01-11 00:04:09'),
+(40, '1234568', '5678', '910', '123', '456', '8', 0, '789', '2019-01-11 00:04:17', '2019-01-11 00:04:17'),
+(41, '1234568878', '5678', '910', '123', '456', '8', 0, '789', '2019-01-11 00:04:26', '2019-01-11 00:04:26'),
+(42, '1234568878788', '5678', '910', '123', '456', '8', 0, '789', '2019-01-11 00:04:41', '2019-01-11 00:04:41'),
+(43, '35464802000025120', '354648020000251', '00:08:22:8A:0F:51', '50be43603b4b7823', '8988038505080290135f', '000000', 0, 'Symphony V135', '2019-01-11 00:35:01', '2019-01-11 00:35:01'),
+(44, '123451234125123', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-11 01:14:07', '2019-01-11 23:30:03'),
+(45, '12345123412512312', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-11 23:47:44', '2019-01-12 00:10:15'),
+(46, '123451', '567850', '910', '123', NULL, NULL, 1, '789', '2019-01-12 00:11:31', '2019-01-12 00:14:31'),
+(47, '354648020000251', '354648020000251', '00:08:22:91:0B:51', '50be43603b4b7823', '8988038505080290135f', '000000', 2, 'Symphony V135', '2019-01-12 00:15:17', '2019-01-12 00:15:17');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `bkash`
+--
+ALTER TABLE `bkash`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `IMEI1` (`IMEI1`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `bkash`
+--
+ALTER TABLE `bkash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

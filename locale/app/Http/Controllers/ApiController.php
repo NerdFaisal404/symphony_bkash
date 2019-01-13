@@ -103,7 +103,7 @@ class ApiController extends Controller
         }else{
             return response()->json([
                     'status' => 'Data Not Found',
-                    'code'=>200
+                    'code'=>204
                 ]);
         }
     }
@@ -117,16 +117,18 @@ class ApiController extends Controller
             $data['ANDROID_ID'] = $bKash->ANDROID_ID;
             $data['sim1'] = $bKash->sim1;
             $data['sim2'] = $bKash->sim2;
-            $data['Activated'] = $bKash->Activated;
+            $data['Activated'] = (int) $bKash->Activated;
             $data['Model'] = $bKash->Model;
 
 			return response()->json([
-					'data' => $data                    
+					'data' => $data,
+                    'status' => 'Data Found',
+                    'code'=>200                   
                 ]);
 		}else{
 			return response()->json([
                     'status' => 'Data Not Found',
-                    'code'=>200
+                    'code'=>204
                 ]);
 		}
     }
